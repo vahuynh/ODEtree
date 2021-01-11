@@ -29,15 +29,23 @@ For XGB, `importance_type` can be 'weight', 'gain', 'total_gain', 'cover', or 't
 
 ## Example
 
-The example below shows how to infer a network from the yeast dataset, and how to benchmark it against the gold standard network. We use here the Random forest method with 100 trees.
+The example below shows how to infer a network from the drosophila dataset, and how to benchmark it against the gold standard network. We use here the Random forest method with 100 trees.
 
 ```
 from ODEtreenetwork import ODEtreenetwork, get_gold_standard, scores
 import _pickle
 
 #Load data
-with open('datasets/yeast/yeast_data.pkl', 'rb') as f:
+with open('datasets/drosophila/drosophila_data_.pkl', 'rb') as f:
 	(TS_data, time_points, gene_names, regulators, alphas) = _pickle.load(f)
-	
+
+#Infer network
 VIM = ODEtree_network(TS_data, time_points, alpha=alphas, gene_names=gene_names, regulators=regulators, tree_method='RF', tree_kwargs=dict(n_estimators=100))
+
+#Load gold standard
+goldfile = 'datasets/drosophila/drosophila_gold_standard.txt'
+goldnet = get_gold_standard(goldfile, gene_names, regulators, only_present_edges=True)
+
+#Compute areas under ROC curve and precision-recall curve
+auroc, aupr = scores(VIM['MDI'], goldnet)
 ```
