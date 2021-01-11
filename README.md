@@ -49,3 +49,22 @@ goldnet = get_gold_standard(goldfile, gene_names, regulators, only_present_edges
 #Compute areas under ROC curve and precision-recall curve
 auroc, aupr = scores(VIM['MDI'], goldnet)
 ```
+
+---
+
+## Data loaders
+
+All the data and gold standard networks used in the experiments of the paper are in the `datasets` directory. The data are stored in pickle files.
+
+To load a DREAM4 dataset:
+
+```
+with open('datasets/dream4/size10_1_data.pkl', 'rb') as f:
+	(TS_data, time_points, SS_data) = _pickle.load(f)
+```
+
+To load a real dataset (e.g. *S. cerevisiae*):
+````
+with open('datasets/yeast/yeast_data.pkl', 'rb') as f:
+	(TS_data, time_points, gene_names, regulators, alphas) = _pickle.load(f)
+```
