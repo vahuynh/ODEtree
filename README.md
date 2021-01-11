@@ -10,3 +10,4 @@ from ODEtree_network import ODEtree_network
 VIM = ODEtree_network(TS_data, time_points, alpha='from_data', SS_data=None, gene_names=None, regulators='all', tree_method='RF', tree_kwargs=None, remove_output=False, nthreads=1)
 ```
 - `TS_data`: List of arrays, where each array contains the gene expression values of one time series experiment. Each row of an array corresponds to a time point and each column corresponds to a gene. The i-th column of each array must correspond to the same gene.
+- `time_points`: List of *n* vectors, where *n* is the number of time series (i.e. the number of arrays in `TS_data`), containing the time points of the different time series. The i-th vector specifies the time points of the i-th time series of `TS_data`.
