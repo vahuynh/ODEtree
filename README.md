@@ -40,7 +40,7 @@ with open('datasets/drosophila/drosophila_data.pkl', 'rb') as f:
 	(TS_data, time_points, gene_names, regulators, alphas) = _pickle.load(f)
 
 #Infer network
-VIM = ODEtree_network(TS_data, time_points, alpha=alphas, gene_names=gene_names, regulators=regulators, tree_method='RF', tree_kwargs=dict(n_estimators=100))
+VIM = ODEtree_network(TS_data, time_points, alpha=alphas, gene_names=gene_names, regulators=regulators, tree_method='RF', tree_kwargs=dict(n_estimators=100, random_state=0))
 
 #Load gold standard
 goldfile = 'datasets/drosophila/drosophila_gold_standard.txt'
