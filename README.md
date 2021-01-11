@@ -36,7 +36,7 @@ from ODEtreenetwork import ODEtreenetwork, get_gold_standard, scores
 import _pickle
 
 #Load data
-with open('datasets/drosophila/drosophila_data_.pkl', 'rb') as f:
+with open('datasets/drosophila/drosophila_data.pkl', 'rb') as f:
 	(TS_data, time_points, gene_names, regulators, alphas) = _pickle.load(f)
 
 #Infer network
