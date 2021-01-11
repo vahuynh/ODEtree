@@ -64,7 +64,7 @@ with open('datasets/dream4/size10_1_data.pkl', 'rb') as f:
 ```
 
 To load a real dataset (e.g. *S. cerevisiae*):
-````
+```
 with open('datasets/yeast/yeast_data.pkl', 'rb') as f:
-	(TS_data, time_points, gene_names, regulators, alphas) = _pickle.load(f)
+	(TS_data, time_points, gene_names, regulators, alphas_from_literature) = _pickle.load(f)
 ```
