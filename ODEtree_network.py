@@ -7,7 +7,7 @@ from multiprocessing import Pool
 
 
 def ODEtree_network(TS_data, time_points, alpha='from_data', SS_data=None, gene_names=None, regulators='all',
-               tree_method='RF', tree_kwargs=None, remove_output=False, nthreads=1):
+                    tree_method='RF', tree_kwargs=None, remove_output=False, nthreads=1):
     '''Computation of tree-based scores for all putative regulatory links.
 
     Parameters
@@ -57,12 +57,10 @@ def ODEtree_network(TS_data, time_points, alpha='from_data', SS_data=None, gene_
     Returns
     -------
 
-    VIM: a dictionary in which VIM[importance_type] is an array where the element (i,j) is the score of the edge directed from the i-th gene to the j-th gene.
-    All diagonal elements are set to zero (auto-regulations are not considered).
-    When a list of candidate regulators is provided, all the edges directed from a gene that is not a candidate
-    regulator are set to zero.
+    VIM: a dictionary in which VIM[importance_type] is an array where the element (i,j) is the score of the edge directed from the i-th regulator to the j-th gene.
+    Auto-regulations, i.e. links from a regulator to itself, are set to zero.
     For RF, importance_type is 'MDI'.
-    For XGB, importance_type can be 'weight', 'gain', 'total_gain', 'cover', or 'total_cover'?
+    For XGB, importance_type can be 'weight', 'gain', 'total_gain', 'cover', or 'total_cover'.
 
 
     '''

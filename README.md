@@ -18,5 +18,14 @@ VIM = ODEtree_network(TS_data, time_points, alpha='from_data', SS_data=None, gen
 - `tree_method`: Either 'RF' or 'XGB'. Specifies which tree-based procedure is used: either Random Forest ('RF') or XGBoost ('XGB').
 - `tree_kwargs`: Dictionary comprising the hyper-parameters of the tree-based method. The hyper-parameters and the ones of the scikit-learn [RandomForestRegressor class](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html) for RF and of the XGBoost [XGBRegresor class](https://xgboost.readthedocs.io/en/latest/python/python_api.html) for XGB.
 - 'remove_output': Boolean indicating whether or not to remove the target gene *j* from the candidate regulators when learning model *f_j*.
-- 'nthreads': Number of threads used for parallel computing.
+- 'nthreads': Number of threads used for parallel computing. 
+
+Returns: a dictionary `VIM`, in which `VIM[importance_type]` is an array where the element (*i,j*) is the score of the edge directed from the *i*-th regulator to the *j*-th gene. 
+
+Auto-regulations, i.e. links from a regulator to itself, are set to zero.
+
+For RF, `importance_type` is 'MDI'.
+
+For XGB, `importance_type` can be 'weight', 'gain', 'total_gain', 'cover', or 'total_cover'.
+
 
