@@ -34,6 +34,8 @@ The example below shows how to infer a network from the yeast dataset, and how t
 ```
 from ODEtreenetwork import ODEtreenetwork, get_gold_standard, scores
 import _pickle
+
+\# Load data
 with open('datasets/yeast/yeast_data.pkl', 'rb') as f:
 	(TS_data, time_points, gene_names, regulators, alphas) = _pickle.load(f)
 	
