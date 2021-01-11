@@ -24,3 +24,21 @@ Returns: a dictionary `VIM`, in which `VIM[importance_type]` is an array where t
 Auto-regulations, i.e. links from a regulator to itself, are set to zero.
 For RF, `importance_type` is 'MDI'.
 For XGB, `importance_type` can be 'weight', 'gain', 'total_gain', 'cover', or 'total_cover'.
+
+---
+
+## Example
+
+The example below shows how to infer a network from yeast dataset, and how to compare it to the gold standard network. We use here the Random forest method with 100 trees.
+
+```
+from ODEtreenetwork import ODEtreenetwork, get_gold_standard, scores
+
+import _pickle
+
+with open('datasets/yeast/yeast_data.pkl', 'rb') as f:
+	
+	(TS_data, time_points, gene_names, regulators, alphas) = _pickle.load(f)
+	
+VIM = ODEtree_network(TS_data, time_points, alpha=alphas, gene_names=gene_names, regulators=regulators, tree_method='RF', tree_kwargs=dict(n_estimators=100))
+```
