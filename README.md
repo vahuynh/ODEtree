@@ -32,7 +32,7 @@ For XGB, `importance_type` can be 'weight', 'gain', 'total_gain', 'cover', or 't
 The example below shows how to infer a network from the Drosophila dataset, and how to benchmark it against the gold standard network. We use here the Random forest method with 100 trees.
 
 ```
-from ODEtreenetwork import ODEtreenetwork, get_gold_standard, scores
+from ODEtree_network import ODEtree_network, get_gold_standard, scores
 import _pickle
 
 #Load data
